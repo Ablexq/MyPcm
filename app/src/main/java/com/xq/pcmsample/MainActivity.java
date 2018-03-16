@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.xq.pcmsample.util.AudioRecordManager;
 import com.xq.pcmsample.util.AudioTrackManager;
+import com.xq.pcmsample.util.PcmToWavUtil;
 
 import java.io.File;
 
@@ -43,11 +44,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button startTrack = findViewById(R.id.startTrack);
         Button stopTrack = findViewById(R.id.stopTrack);
         Button deleteAudio = findViewById(R.id.deleteAudio);
+        Button pcm2wav = findViewById(R.id.pcm2wav);
         startRecord.setOnClickListener(this);
         stopRecord.setOnClickListener(this);
         startTrack.setOnClickListener(this);
         stopTrack.setOnClickListener(this);
         deleteAudio.setOnClickListener(this);
+        pcm2wav.setOnClickListener(this);
     }
 
     //点击事件
@@ -77,6 +80,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.deleteAudio:
                 deleFile();
                 printLog("删除本地录音");
+                break;
+
+            case R.id.pcm2wav:
+                String outpath = file.getAbsolutePath().replace(".pcm", ".wav");
+                new PcmToWavUtil().pcmToWav(file.getAbsolutePath(), outpath);
+                printLog("PcmToWav");
                 break;
         }
     }

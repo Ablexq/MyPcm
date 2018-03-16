@@ -49,6 +49,15 @@
         android:text="删除PCM"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/pcm2wav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_bg"
+        android:text="PCM2WAV"
+        android:textColor="@android:color/white" />
+
     <ScrollView
         android:id="@+id/mScrollView"
         android:layout_width="match_parent"

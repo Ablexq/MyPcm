@@ -226,6 +226,29 @@ public  static final int ERROR_DEAD_OBJECT                     = AudioSystem.DEA
 
 ```
 
+参考：[Android进阶——pcm格式转wav格式](http://blog.csdn.net/haovip123/article/details/52356024)
+
+PCM
+---
+PCM（Pulse Code Modulation----脉码调制录音)。
+所谓PCM录音就是将声音等模拟信号变成符号化的脉冲列，再予以记录。
+PCM信号是由[1]、[0]等符号构成的数字信号，而未经过任何编码和压缩处理。
+与模拟信号比，它不易受传送系统的杂波及失真的影响。
+动态范围宽，可得到音质相当好的效果。
+简单的说，pcm就是没有压缩的音频格式。
+
+wav
+---
+wav全称是WAVE，.wav是其扩展名，它是一种无损的音频文件格式，
+WAV符合 RIFF(Resource Interchange File Format)规范。
+所有的WAV都有一个文件头，这个文件头是音频流的编码参数。
+WAV对音频流的编码没有硬性规定，除了PCM之外，
+还有几乎所有支持ACM规范的编码都可以为WAV的音频流进行编码。
+
+pcm和wav关系
+---
+pcm是无损wav文件中音频数据的一种编码方式，
+pcm加上wav文件头就可以转为wav格式，但wav还可以用其它方式编码。
 
 
 
