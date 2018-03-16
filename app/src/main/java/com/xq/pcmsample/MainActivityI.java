@@ -1,4 +1,4 @@
-package com.liuguilin.pcmsample;
+package com.xq.pcmsample;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -8,15 +8,22 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.xq.pcmsample.util.MediaPlayerManager;
+import com.xq.pcmsample.util.MediaRecorderManager;
+
 import java.io.File;
 
+/**
+ * MediaRecorder录音
+ * MediaPlayer播放
+ */
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivityI extends AppCompatActivity implements View.OnClickListener {
 
     private ScrollView mScrollView;
     private TextView tv_audio_succeess;
-    //pcm文件
-    private File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/myaudio.pcm");
+    //.m4a为MPEG-4音频标准的文件的扩展名
+    private File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/zmymedia.m4a");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         mScrollView = (ScrollView) findViewById(R.id.mScrollView);
         tv_audio_succeess = (TextView) findViewById(R.id.tv_audio_succeess);
-        printLog("初始化成功");
+        printLog("MediaRecorder录音 MediaPlayer播放 初始化成功");
         Button startRecord = findViewById(R.id.startRecord);
         Button stopRecord = findViewById(R.id.stopRecord);
         Button startTrack = findViewById(R.id.startTrack);
@@ -48,22 +55,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.startRecord:
-                AudioRecordManager.getInstance().startRecord(file.getAbsolutePath());
+                MediaRecorderManager.getInstance().start(file.getAbsolutePath());
                 printLog("开始录音");
                 break;
 
             case R.id.stopRecord:
-                AudioRecordManager.getInstance().stopRecord();
+                MediaRecorderManager.getInstance().stop();
                 printLog("停止录音");
                 break;
 
             case R.id.startTrack:
-                AudioTrackManager.getInstance().startPlay(file.getAbsolutePath());
+                MediaPlayerManager.getInstance().play(file.getAbsolutePath());
                 printLog("播放录音");
                 break;
 
             case R.id.stopTrack:
-                AudioTrackManager.getInstance().stopPlay();
+                MediaPlayerManager.getInstance().stop();
                 printLog("停止播放");
                 break;
 

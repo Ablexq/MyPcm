@@ -5,6 +5,8 @@
 
 [Android音频开发之AudioTrack实时播放](http://www.cnblogs.com/whoislcj/p/5477229.html)
 
+[Android使用MediaRecorder实现录音及播放](http://blog.csdn.net/true100/article/details/54962908)
+
 AudioRecord和AudioTrack类是Android获取和播放音频流的重要类，放置在android.media包中。与该包中的MediaRecorder和MediaPlayer类不同，AudioRecord和AudioTrack类在获取和播放音频数据流时无需通过文件保存和文件读取，可以动态地直接获取和播放音频流，在实时处理音频数据流时非常有用。
 
 当然，如果用户只想录音后写入文件或从文件中取得音频流进行播放，那么直接使用MediaRecorder和MediaPlayer类是首选方案，因为这两个类使用非常方便，而且成功率很高。

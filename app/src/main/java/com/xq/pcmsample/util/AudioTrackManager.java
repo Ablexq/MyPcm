@@ -1,4 +1,4 @@
-package com.liuguilin.pcmsample;
+package com.xq.pcmsample.util;
 
 import android.media.AudioFormat;
 import android.media.AudioManager;
