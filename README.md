@@ -1,13 +1,23 @@
 
+参考：
 
+[Android音频处理——通过AudioRecord去保存PCM文件进行录制，播放，停止，删除功能](http://blog.csdn.net/qq_26787115/article/details/53078951)
+
+[Android音频开发之AudioTrack实时播放](http://www.cnblogs.com/whoislcj/p/5477229.html)
 
 AudioRecord和AudioTrack类是Android获取和播放音频流的重要类，放置在android.media包中。与该包中的MediaRecorder和MediaPlayer类不同，AudioRecord和AudioTrack类在获取和播放音频数据流时无需通过文件保存和文件读取，可以动态地直接获取和播放音频流，在实时处理音频数据流时非常有用。
 
 当然，如果用户只想录音后写入文件或从文件中取得音频流进行播放，那么直接使用MediaRecorder和MediaPlayer类是首选方案，因为这两个类使用非常方便，而且成功率很高。
 
+
 1.AudioRecord与MediaRecorder一样用来录制音频的
-2.AudioRecord可以对录制的数据进行实时的处理，比如降噪，除杂，或者将音频进行实时传输，比如IP电话，对讲功能等操作。
-3.AudioRecord比MediaRecorder更接近底层，录制的音频是PCM格式的，只能用AudioTraker进行播放，或者将PCM数据转换成ａｍｒ,wav等格式播放。
+
+2.AudioRecord可以对录制的数据进行实时的处理，
+比如降噪，除杂，或者将音频进行实时传输，比如IP电话，对讲功能等操作。
+
+3.AudioRecord比MediaRecorder更接近底层，录制的音频是PCM格式的，
+只能用AudioTraker进行播放，或者将PCM数据转换成amr,wav等格式播放。
+
 
 AudioRecord，以pulling方式通过read()方法对缓冲区的数据进行轮询，来实时的获取缓冲区的数据。
 AudioTrack，专门用来播放PCM数据.
@@ -138,6 +148,24 @@ mRecorder.release();
 ```
 
 
+MediaRecorder和AudioRecord区别：
+---
+MediaRecorder和AudioRecord都可以录制音频，区别是MediaRecorder录制的音频文件是经过压缩后的，需要设置编码器。并且录制的音频文件可以用系统自带的Music播放器播放。
+而AudioRecord录制的是PCM格式的音频文件，需要用AudioTrack来播放，AudioTrack更接近底层。
+PCM可能更加可以理解为音频的源文件
+
+AudioRecord优缺点
+--
+主要是实现边录边播以及对音频的实时处理,这个特性让他更适合在语音方面有优势
+优点：语音的实时处理，可以用代码实现各种音频的封装
+缺点：输出是PCM格式文件，如果保存成音频文件，是不能够被播放器播放的，所以必须先写代码实现数据编码以及压缩
+
+MediaRecorder优缺点：
+--
+已经集成了录音、编码、压缩等，支持少量的录音音频格式，大概有,aac,amr,3gp等
+优点：集成，直接调用相关接口即可，代码量小
+缺点：无法实时处理音频；输出的音频格式不是很多，例如没有输出mp3格式文件
+
 
 
 
@@ -195,16 +223,6 @@ public  static final int ERROR_INVALID_OPERATION               = AudioSystem.INV
 public  static final int ERROR_DEAD_OBJECT                     = AudioSystem.DEAD_OBJECT;
 
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 
